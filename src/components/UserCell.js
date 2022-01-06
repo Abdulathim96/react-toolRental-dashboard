@@ -11,7 +11,7 @@ function UserCell(props) {
   return (
     <tr style={{ verticalAlign: "middle", tableLayout: "fixed", wordWrap: "break-word" }}>
       <td>
-        <img src={user.avatar} style={{ objectFit: "contain", height: "100px", width: "100%", borderRadius: "50%" }} />
+        <img src={user.avatar} style={{ objectFit: "contain", height: "100px", width: "100%", clipPath: "circle()" }} />
       </td>
       <td style={{ textOverflow: "ellipsis", whiteSpace: "nowrap", overflow: "hidden" }}>{user._id}</td>
       <td>
