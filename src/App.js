@@ -192,7 +192,7 @@ function App() {
     }
   }
   /*Edit categorys*/
-  const editCategory = async (e, GanraId) => {
+  const editCategory = async (e, categoryId) => {
     e.preventDefault()
     try {
       const form = e.target
@@ -200,7 +200,7 @@ function App() {
       const CategoryBody = {
         name: form.elements.name.value,
       }
-      await axios.put(`http://localhost:5000/api/categorys/${GanraId}`, CategoryBody, {
+      await axios.put(`http://localhost:5000/api/categorys/${categoryId}`, CategoryBody, {
         headers: {
           Authorization: localStorage.tokenDashboardOffers,
         },

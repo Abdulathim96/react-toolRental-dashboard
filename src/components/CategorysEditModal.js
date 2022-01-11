@@ -3,16 +3,16 @@ import { Button, Col, Form, Image, ListGroup, Modal, Row } from "react-bootstrap
 import ToolRentelContext from "../utils/ToolRentelContext"
 
 function CategoryEditModal(props) {
-  const { show, setShow, category } = props
-  const { editcategory } = useContext(ToolRentelContext)
+  const { show, setShow, category} = props
+  const { editCategory } = useContext(ToolRentelContext)
   return (
     <Modal show={show} onHide={() => setShow(false)}>
-      <Form className="mt-5" onSubmit={e => editcategory(e, category._id)}>
+      <Form className="mt-5" onSubmit={e => editCategory(e, category._id)}>
         <Modal.Header closeButton>
           <Modal.Title>Edit Film</Modal.Title>
         </Modal.Header>
         <Form.Group as={Row} className="mb-3">
-          <Form.Label column md="3">
+          <Form.Label  md="3">
             Name
           </Form.Label>
           <Col md="8">
