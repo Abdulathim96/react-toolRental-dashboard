@@ -12,11 +12,13 @@ import Users from "./pages/Users"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import ToolRentelContext from "./utils/ToolRentelContext"
+import SubCategories from "./pages/SubCategories"
 
 function App() {
   const [offers, setOffers] = useState([])
   const [requests, setRequests] = useState([])
   const [categorys, setCategorys] = useState([])
+  const [subCategories, setSubCategoies] = useState([])
   const [users, setUsers] = useState([])
   const navigate = useNavigate()
 
@@ -40,7 +42,14 @@ function App() {
     const response = await axios.get("http://localhost:5000/api/categorys")
     setCategorys(response.data)
   }
-  /* Get Categorys */
+  /* Get Category */
+  /////////////////////
+  /* Get subCategories */
+  const getSubCategoies = async () => {
+    const response = await axios.get(`http://localhost:5000/api/categorys/subCategories`)
+    setSubCategoies(response.data)
+  }
+  /* Get SubCategories */
   /////////////////////
   /*Get Users*/
   const getUsers = async () => {
@@ -57,6 +66,7 @@ function App() {
     getOffers()
     getRequests()
     getCategorys()
+    getSubCategoies()
     getUsers()
   }, [])
 
@@ -227,6 +237,72 @@ function App() {
       else console.log(error)
     }
   }
+  //___________________________________________________________________________
+
+  /* subCategories */
+  const addsubCategory = async e => {
+    e.preventDefault()
+    try {
+      const form = e.target
+      const categoryId = form.elements.categorys.value
+      const subCategorytBody = {
+        name: form.elements.name.value,
+      }
+
+      form.reset()
+      await axios.post(`http://localhost:5000/api/categorys/${categoryId}/subCategory`, subCategorytBody, {
+        headers: {
+          Authorization: localStorage.tokenOffers,
+        },
+      })
+      getSubCategoies()
+      toast.success("subCategory added")
+    } catch (error) {
+      if (error.response) toast.error(error.response.data)
+      else console.log(error)
+    }
+  }
+
+  const editSubCategory = async (e, categoryId, subCategoryId) => {
+    e.preventDefault()
+    try {
+      const form = e.target
+
+      const subCategoryBody = {
+        name: form.elements.name.value,
+      }
+      await axios.put(
+        `http://localhost:5000/api/categorys/${categoryId}/subCategory/${subCategoryId}`,
+        subCategoryBody,
+        {
+          headers: {
+            Authorization: localStorage.tokenDashboardOffers,
+          },
+        }
+      )
+      getSubCategoies()
+      toast.success("edit success")
+    } catch (error) {
+      if (error.response) toast.error(error.response.data)
+      else console.log(error)
+    }
+  }
+
+  const deleteSubCategory = async (categoryId, subCategoryId) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/categorys/${categoryId}/subCategory/${subCategoryId}`, {
+        headers: {
+          Authorization: localStorage.tokenDashboardOffers,
+        },
+      })
+      toast.success("Category deleted")
+      getSubCategoies()
+    } catch (error) {
+      if (error.response) toast.error(error.response.data)
+      else console.log(error)
+    }
+  }
+  /* subCategories */
 
   //___________________________________________________________________________
   // User //
@@ -307,6 +383,10 @@ function App() {
     addCategory,
     editCategory,
     deleteCategory,
+    subCategories,
+    addsubCategory,
+    editSubCategory,
+    deleteSubCategory,
     users,
     addAdmin,
     deleteUser,
@@ -331,6 +411,10 @@ function App() {
             <Route
               path="/categorys"
               element={localStorage.tokenDashboardOffers ? <Categorys /> : <Navigate to="/login" />}
+            />
+            <Route
+              path="/subCategory"
+              element={localStorage.tokenDashboardOffers ? <SubCategories /> : <Navigate to="/login" />}
             />
             <Route path="/users" element={localStorage.tokenDashboardOffers ? <Users /> : <Navigate to="/login" />} />
             <Route path="/login" element={<Login />} />

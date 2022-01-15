@@ -4,7 +4,7 @@ import ToolRentelContext from "../utils/ToolRentelContext"
 
 function CategoryDeleteModal(props) {
   const { deleteCategory } = useContext(ToolRentelContext)
-  const { show, setShow, genreId } = props
+  const { show, setShow, categoryId } = props
 
   return (
     <Modal show={show} onHide={() => setShow(false)}>
@@ -16,7 +16,7 @@ function CategoryDeleteModal(props) {
         <Button variant="secondary" onClick={() => setShow(false)}>
           Cancel
         </Button>
-        <Button variant="danger" onClick={() => deleteCategory(genreId)}>
+        <Button variant="danger" onClick={() => deleteCategory(categoryId)}>
           Confirm
         </Button>
       </Modal.Footer>

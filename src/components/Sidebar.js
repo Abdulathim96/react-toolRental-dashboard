@@ -11,12 +11,12 @@ import ListItem from "@mui/material/ListItem"
 import ListItemIcon from "@mui/material/ListItemIcon"
 import ListItemText from "@mui/material/ListItemText"
 import InboxIcon from "@mui/icons-material/MoveToInbox"
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import RequestPageIcon from '@mui/icons-material/RequestPage';
-import CategoryIcon from '@mui/icons-material/Category'
+import LocalOfferIcon from "@mui/icons-material/LocalOffer"
+import RequestPageIcon from "@mui/icons-material/RequestPage"
+import CategoryIcon from "@mui/icons-material/Category"
 import RecentActorsIcon from "@mui/icons-material/RecentActors"
 import GroupIcon from "@mui/icons-material/Group"
-import StoreIcon from '@mui/icons-material/Store';
+import StoreIcon from "@mui/icons-material/Store"
 import { createTheme, ThemeProvider } from "@mui/material"
 import { Link } from "react-router-dom"
 import LoginIcon from "@mui/icons-material/Login"
@@ -88,6 +88,14 @@ export default function PermanentDrawerLeft() {
                 <CategoryIcon />
               </ListItemIcon>
               <ListItemText primary="categorys" sx={{ color: "white", textDecoration: "none" }} />
+            </ListItem>
+          </Link>
+          <Link to="/subCategory">
+            <ListItem button>
+              <ListItemIcon>
+                <CategoryIcon />
+              </ListItemIcon>
+              <ListItemText primary="subCategory" sx={{ color: "white", textDecoration: "none" }} />
             </ListItem>
           </Link>
         </List>
