@@ -22,35 +22,38 @@ function App() {
   const [users, setUsers] = useState([])
   const navigate = useNavigate()
 
-  /////////////////////
+  
   /* Get Offer */
   const getOffers = async () => {
     const response = await axios.get("http://localhost:5000/api/offers")
     setOffers(response.data)
   }
   /* Get Offer */
-  /////////////////////
+  //______________________________________________________________________________
   /* Get Request */
   const getRequests = async () => {
     const response = await axios.get("http://localhost:5000/api/requests")
     setRequests(response.data)
   }
   /* Get Request */
-  /////////////////////
+    //______________________________________________________________________________
+
   /* Get Categorys */
   const getCategorys = async () => {
     const response = await axios.get("http://localhost:5000/api/categorys")
     setCategorys(response.data)
   }
   /* Get Category */
-  /////////////////////
+  //______________________________________________________________________________
+
   /* Get subCategories */
   const getSubCategoies = async () => {
     const response = await axios.get(`http://localhost:5000/api/categorys/subCategories`)
     setSubCategoies(response.data)
   }
   /* Get SubCategories */
-  /////////////////////
+    //______________________________________________________________________________
+
   /*Get Users*/
   const getUsers = async () => {
     const response = await axios.get("http://localhost:5000/api/auth/users", {
@@ -61,7 +64,8 @@ function App() {
     setUsers(response.data)
   }
   /*Get Users*/
-  /////////////////////
+    //______________________________________________________________________________
+
   useEffect(() => {
     getOffers()
     getRequests()
@@ -90,38 +94,38 @@ function App() {
 
   /* Edit Offer */
 
-  const editOffer = async (e, offerId) => {
-    e.preventDefault()
-    try {
-      const form = e.target
+  // const editOffer = async (e, offerId) => {
+  //   e.preventDefault()
+  //   try {
+  //     const form = e.target
 
-      const categorys = []
-      form.elements.categorys.forEach(category => {
-        if (category.checked) {
-          categorys.push(category.value)
-        }
-      })
+  //     const categorys = []
+  //     form.elements.categorys.forEach(category => {
+  //       if (category.checked) {
+  //         categorys.push(category.value)
+  //       }
+  //     })
 
-      const offerBody = {
-        title: form.elements.title.value,
-        description: form.elements.description.value,
-        photo: form.elements.photo.value,
-        price: form.elements.price.value,
-        phoneNumber: form.elements.phoneNumber.value,
-        categorys: categorys,
-      }
-      await axios.put(`http://localhost:5000/api/offers/${offerId}`, offerBody, {
-        headers: {
-          Authorization: localStorage.tokenDashboardOffers,
-        },
-      })
-      getOffers()
-      toast.success("edit success")
-    } catch (error) {
-      if (error.response) toast.error(error.response.data)
-      else console.log(error)
-    }
-  }
+  //     const offerBody = {
+  //       title: form.elements.title.value,
+  //       description: form.elements.description.value,
+  //       photo: form.elements.photo.value,
+  //       price: form.elements.price.value,
+  //       phoneNumber: form.elements.phoneNumber.value,
+  //       categorys: categorys,
+  //     }
+  //     await axios.put(`http://localhost:5000/api/offers/${offerId}`, offerBody, {
+  //       headers: {
+  //         Authorization: localStorage.tokenDashboardOffers,
+  //       },
+  //     })
+  //     getOffers()
+  //     toast.success("edit success")
+  //   } catch (error) {
+  //     if (error.response) toast.error(error.response.data)
+  //     else console.log(error)
+  //   }
+  // }
 
   /* Add offer */
 
@@ -376,7 +380,7 @@ function App() {
     offers,
     deleteOffer,
     addOffer,
-    editOffer,
+    // editOffer,
     requests,
     deleteRequest,
     categorys,
