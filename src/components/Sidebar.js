@@ -41,7 +41,7 @@ export default function PermanentDrawerLeft() {
         palette: {
           mode: "dark",
           primary: { main: "rgb(102, 157, 246)" },
-          background: { paper: "rgb(4, 28, 50)" },
+          background: { paper: "rgb(34, 40, 49)" },
         },
       })}
     >

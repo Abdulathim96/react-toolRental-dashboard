@@ -16,13 +16,14 @@ function Requests() {
           <AddIcon />
         </Button> */}
       </div>
-      <Table bordered hover style={{ tableLayout: "fixed" }}>
+      <Table bordered hover style={{ tableLayout: "fixed",backgroundColor: "rgb(248, 248, 248)" }}>
         <thead>
-          <tr>
+          <tr style={{backgroundColor: "rgb(44, 52, 64)", color: "#fff"}}>
             <th style={{ width: "9%" }}>#</th>
             <th style={{ width: "18%" }}>Title</th>
             <th style={{ width: "18%" }}>Description</th>
             <th style={{ width: "18%" }}>photo</th>
+            <th style={{ width: "23%" }}>Actions</th>
           </tr>
         </thead>
         <tbody>

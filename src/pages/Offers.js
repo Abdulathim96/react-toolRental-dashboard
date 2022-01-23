@@ -4,7 +4,6 @@ import { Table } from "react-bootstrap"
 import ToolRentelContext from "../utils/ToolRentelContext"
 import OfferCell from "../components/OfferCell"
 import AddIcon from "@mui/icons-material/Add"
-import OfferAddModal from "../components/OfferAddModal"
 
 function Offers() {
   const { offers } = useContext(ToolRentelContext)
@@ -13,17 +12,16 @@ function Offers() {
     <>
       <h1 style={{ marginTop: 10 }}>Offers</h1>
       <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button style={{ marginRight: 40, marginBottom: 10 }} onClick={() => setShow(true)} variant="outline-primary">
-          <AddIcon />
-        </Button>
       </div>
-      <Table bordered hover style={{ tableLayout: "fixed" }}>
+      <Table bordered hover style={{ tableLayout: "fixed",backgroundColor: "rgb(248, 248, 248)" }}>
         <thead>
-          <tr>
+          <tr style={{backgroundColor: "rgb(44, 52, 64)", color: "#fff"}}>
             <th style={{ width: "9%" }}>#</th>
             <th style={{ width: "18%" }}>Title</th>
             <th style={{ width: "18%" }}>Description</th>
             <th style={{ width: "18%" }}>photo</th>
+            <th style={{ width: "23%" }}>Actions</th>
+
           </tr>
         </thead>
         <tbody>
@@ -32,7 +30,6 @@ function Offers() {
           ))}
         </tbody>
       </Table>
-      <OfferAddModal show={show} setShow={setShow} />
     </>
   )
 }

@@ -18,9 +18,9 @@ function Users() {
           <AddIcon /> Add Admin
         </Button>
       </div>
-      <Table bordered hover style={{ tableLayout: "fixed" }}>
+      <Table bordered hover style={{ tableLayout: "fixed",backgroundColor: "rgb(248, 248, 248)" }}>
         <thead>
-          <tr>
+          <tr style={{backgroundColor: "rgb(44, 52, 64)", color: "#fff"}}>
             <th style={{ width: "15%" }}>Avatar</th>
             <th style={{ width: "10%" }}>#</th>
             <th style={{ width: "15%" }}>Full Name</th>
